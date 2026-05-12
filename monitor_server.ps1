@@ -1,5 +1,5 @@
 # --- KONFIGURASI ---
-$webhookURL = "https://discord.com/api/webhooks/1503695823840612382/0ZFSlI4vtcSVvWFvY-e0esRSptROaDFz02-G3tnW4lEgOGGJFMwGtVOneVuGovdLO9eg"
+$webhookURL = "#"
 $serverName = $env:COMPUTERNAME
 $waktu = Get-Date -Format "dddd, dd MMMM yyyy HH:mm"
 
