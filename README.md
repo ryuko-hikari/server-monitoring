@@ -37,7 +37,7 @@ Untuk mengirim laporan otomatis (misal: setiap jam 08:00 dan 17:00), gunakan Win
 3. Pada Action, pilih Start a Program.
    * rogram/script : powershell.exe
    * Arguments: -ExecutionPolicy Bypass -File "C:\path\ke\skrip\anda\monitor_server.ps1"
-4.Centang Run with highest privileges agar fitur monitoring sesi user aktif.
+4. Centang Run with highest privileges agar fitur monitoring sesi user aktif.
 
 📝 Catatan
 Pastikan file disimpan dengan encoding UTF-8 atau ANSI untuk menghindari error pembacaan karakter pada PowerShell.
