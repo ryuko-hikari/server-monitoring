@@ -56,3 +56,32 @@ $payload = @{ embeds = @($embed) } | ConvertTo-Json -Depth 4
 
 # --- KIRIM KE DISCORD ---
 Invoke-RestMethod -Uri $webhookURL -Method Post -Body $payload -ContentType "application/json"
+
+# --- FITUR TAMBAHAN: GENERATE REPORT HTML (UNTUK PDF) ---
+$htmlPath = "C:\Reports\Laporan_$($serverName)_$(Get-Date -Format 'yyyyMMdd').html"
+
+$htmlContent = @"
+<html>
+<head>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .header { background: #2c3e50; color: white; padding: 10px; text-align: center; }
+        .status { padding: 10px; border: 1px solid #ddd; margin-top: 10px; }
+        .safe { color: green; } .warning { color: orange; } .critical { color: red; }
+    </style>
+</head>
+<body>
+    <div class='header'><h1>Laporan Server $serverName</h1><p>$waktu</p></div>
+    <div class='status'>
+        <h3>Ringkasan Sistem:</h3>
+        <p>Status Jaringan: $networkStatus</p>
+        <p>User Aktif: $sessionCount</p>
+        <p>Sisa RAM: $freeRAM GB / $totalRAM GB</p>
+        <h3>Detail Storage:</h3>
+        <pre>$diskReport</pre>
+    </div>
+</body>
+</html>
+"@
+
+$htmlContent | Out-File -FilePath $htmlPath -Encoding utf8
