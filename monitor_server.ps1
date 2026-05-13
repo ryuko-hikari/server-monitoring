@@ -88,7 +88,7 @@ if ($waktuSekarang.Hour -ge $jamMulai -and $waktuSekarang.Hour -lt $jamSelesai) 
                 <pre style="background: #eee; padding: 15px; border-radius: 5px;">$diskReport</pre>
             </div>
         </div>
-        <div class='footer'>PT Bias Teknoart Kreasindo - Laporan Internal IT</div>
+        <div class='footer'>Laporan Internal IT</div>
         <center class='no-print'><br><button onclick='window.print()'>Cetak / Simpan ke PDF</button></center>
     </body>
     </html>
