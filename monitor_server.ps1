@@ -49,7 +49,7 @@ if ($waktuSekarang.Hour -ge $jamMulai -and $waktuSekarang.Hour -lt $jamSelesai) 
             @{ name = "Sisa RAM"; value = "$freeRAM GB dari $totalRAM GB"; inline = $true },
             @{ name = "Status Harddisk"; value = $diskReport; inline = $false }
         )
-        footer = @{ text = "Monitoring System - PT Bias Teknoart Kreasindo" }
+        footer = @{ text = "Monitoring System" }
     }
     $payload = @{ embeds = @($embed) } | ConvertTo-Json -Depth 4
     Invoke-RestMethod -Uri $webhookURL -Method Post -Body $payload -ContentType "application/json"
