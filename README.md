@@ -1,39 +1,43 @@
-# --- KONFIGURASI ---
-$webhookURL = "#"
-$serverName = $env:COMPUTERNAME
-$waktu = Get-Date -Format "dddd, dd MMMM yyyy HH:mm"
+# Windows Server & Network Monitoring to Discord
 
-# 1. Monitoring Harddisk
-$diskReport = Get-WmiObject Win32_LogicalDisk | Where-Object { $_.DriveType -eq 3 } | ForEach-Object {
-    $freeGB = [math]::Round($_.FreeSpace / 1GB, 2)
-    $sizeGB = [math]::Round($_.Size / 1GB, 2)
-    $percentFree = [math]::Round(($_.FreeSpace / $_.Size) * 100, 2)
-    "Drive $($_.DeviceID) - Sisa: $freeGB GB ($percentFree%) dari $sizeGB GB"
-}
+Skrip PowerShell ringan untuk memantau kesehatan Windows Server secara real-time dan mengirimkan laporannya langsung ke channel Discord melalui Webhook. Cocok digunakan untuk admin IT yang mengelola server tunggal tanpa perlu menginstal software monitoring yang berat.
 
-# 2. Monitoring Jaringan
-$pingTest = Test-Connection -ComputerName 8.8.8.8 -Count 1 -Quiet
-$networkStatus = if ($pingTest) { "Online" } else { "Offline" }
+## 📊 Fitur Utama
+* **Status Jaringan**: Mengecek konektivitas internet secara otomatis.
+* **Sesi Akses User**: Memantau jumlah perangkat yang sedang mengakses folder sharing (SMB) di server.
+* **Monitoring RAM**: Menampilkan sisa RAM yang tersedia.
+* **Monitoring Disk (Warna Indikator)**:
+    * `+ [SAFE]` (Hijau): Sisa kapasitas > 50%.
+    * `[WARNING]` (Kuning): Sisa kapasitas < 50%.
+    * `- [CRITICAL]` (Merah): Sisa kapasitas < 20%.
+* **Timestamp Otomatis**: Laporan dilengkapi dengan hari, tanggal, dan jam pengiriman.
 
-# 3. Monitoring RAM
-$os = Get-WmiObject Win32_OperatingSystem
-$freeRAM = [math]::Round($os.FreePhysicalMemory / 1MB, 2)
-$totalRAM = [math]::Round($os.TotalVisibleMemorySize / 1MB, 2)
+## 🚀 Persiapan
+1. **Discord Webhook**:
+    * Buka channel Discord Anda.
+    * Pergi ke `Integrations` > `Webhooks` > `New Webhook`.
+    * Salin **Webhook URL** Anda.
+2. **Konfigurasi Skrip**:
+    * Buka file `monitor_server.ps1`.
+    * Tempel URL Webhook Anda pada variabel `$webhookURL`.
 
-# --- FORMAT PESAN (Gunakan Backtick-n untuk Baris Baru) ---
-$line1 = "LAPORAN SERVER: $serverName"
-$line2 = "Waktu: $waktu"
-$line3 = "------------------------------------------"
-$line4 = "Status Jaringan: $networkStatus"
-$line5 = "Status Harddisk:"
-$line6 = $diskReport -join "`n"
-$line7 = "Sisa RAM: $freeRAM GB dari $totalRAM GB"
+## 🛠️ Cara Penggunaan
+1. Jalankan PowerShell sebagai Administrator.
+2. Atur izin eksekusi jika belum aktif:
+   ```powershell
+   Set-ExecutionPolicy RemoteSigned -Force
 
-$finalMsg = "$line1`n$line2`n$line3`n$line4`n$line5`n$line6`n$line7"
+3.Jalankan skrip secara manual untuk pengetesan : 
+.\monitor_server.ps1
 
-# --- KIRIM KE DISCORD ---
-$payload = @{
-    content = $finalMsg
-} | ConvertTo-Json
+📅 Otomatisasi (Task Scheduler)
+Untuk mengirim laporan otomatis (misal: setiap jam 08:00 dan 17:00), gunakan Windows Task Scheduler :
+1.Buat tugas baru (Create Basic Task).
+2.ilih Trigger Daily dan atur waktunya.
+3Pada Action, pilih Start a Program:
+-Program/script: powershell.exe
+-Arguments: -ExecutionPolicy Bypass -File "C:\path\ke\skrip\anda\monitor_server.ps1"
+4.Centang Run with highest privileges agar fitur monitoring sesi user aktif.
 
-Invoke-RestMethod -Uri $webhookURL -Method Post -Body $payload -ContentType "application/json"
+📝 Catatan
+Pastikan file disimpan dengan encoding UTF-8 atau ANSI untuk menghindari error pembacaan karakter pada PowerShell.
