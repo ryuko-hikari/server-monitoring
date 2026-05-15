@@ -3,10 +3,10 @@
 Untuk memantau kesehatan Windows Server secara real-time dan mengirimkan laporannya langsung ke channel Discord melalui Webhook. Cocok digunakan untuk admin IT yang mengelola server tunggal tanpa perlu menginstal software monitoring yang berat.
 
 ## 📊 Fitur Utama
-* **Status Jaringan**: Mengecek konektivitas internet secara otomatis.
-* **Sesi Akses User**: Memantau jumlah perangkat yang sedang mengakses folder sharing (SMB) di server.
-* **Monitoring RAM**: Menampilkan sisa RAM yang tersedia.
-* **Monitoring Disk (Warna Indikator)**:
+* **Status Jaringan** : Mengecek konektivitas internet secara otomatis.
+* **Sesi Akses User** : Memantau jumlah perangkat yang sedang mengakses folder sharing (SMB) di server.
+* **Monitoring RAM** : Menampilkan sisa RAM yang tersedia.
+* **Monitoring Disk (Warna Indikator)** :
     * `+ [SAFE]` (Hijau): Sisa kapasitas > 50%.
     * `[WARNING]` (Kuning): Sisa kapasitas < 50%.
     * `- [CRITICAL]` (Merah): Sisa kapasitas < 20%.
