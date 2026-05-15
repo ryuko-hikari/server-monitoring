@@ -1,6 +1,6 @@
 # Windows Server & Network Monitoring to Discord
 
-Skrip PowerShell ringan untuk memantau kesehatan Windows Server secara real-time dan mengirimkan laporannya langsung ke channel Discord melalui Webhook. Cocok digunakan untuk admin IT yang mengelola server tunggal tanpa perlu menginstal software monitoring yang berat.
+Untuk memantau kesehatan Windows Server secara real-time dan mengirimkan laporannya langsung ke channel Discord melalui Webhook. Cocok digunakan untuk admin IT yang mengelola server tunggal tanpa perlu menginstal software monitoring yang berat.
 
 ## 📊 Fitur Utama
 * **Status Jaringan**: Mengecek konektivitas internet secara otomatis.
