@@ -36,7 +36,7 @@ Untuk mengirim laporan otomatis (misal: setiap jam 08:00 dan 17:00), gunakan Win
 2. Pilih Trigger Daily dan atur waktunya.
 3. Pada Action, pilih Start a Program.
    * Program/script : powershell.exe
-   * Arguments: -ExecutionPolicy Bypass -File "C:\path\ke\skrip\anda\monitor_server.ps1"
+   * Arguments: -ExecutionPolicy Bypass -File "C:\folder\monitor_server.ps1" (nama bisa bebas).
 4. Centang Run with highest privileges agar fitur monitoring sesi user aktif.
 
 📝 Catatan
