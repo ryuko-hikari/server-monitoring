@@ -1,4 +1,4 @@
-# Windows Server & Network Monitoring to Discord.
+# Windows Server, Management & Network Monitoring to Discord.
 
 Untuk memantau kesehatan Windows Server secara real-time dan mengirimkan laporannya langsung ke channel Discord melalui Webhook. Cocok digunakan untuk admin IT yang mengelola server tunggal tanpa perlu menginstal software monitoring yang berat.
 
