@@ -14,7 +14,7 @@ while($true) {
 
         $json = @{
             embeds = @(@{
-                title = "DASHBOARD REAL-TIME: BITEK-002"
+                title = "DASHBOARD REAL-TIME: SERVER"
                 description = "Terakhir Update: **$waktu**"
                 color = 3066993
                 fields = @(
