@@ -1,4 +1,4 @@
-﻿$webhookURL = "https://discord.com/api/webhooks/1504024281548587069/XqjZDtifnJPCT4C2_s_XwAGd3l8yiE0CBGgNzV7tfiVdvI0AHJZhGv_iyicytneYqeDm"
+﻿$webhookURL = "#"
 $port = 8081
 
 # Bersihkan port agar tidak terjadi konflik
@@ -14,7 +14,7 @@ $activeUsers = @{}
 $timeoutSeconds = 300
 $global:lockedFiles = @{} 
 
-Write-Host "--- SERVER FILE MANAGER BITEK-002: GLASSMORPHISM SKY EDITION ---" -ForegroundColor Cyan
+Write-Host "--- SERVER FILE MANAGER ---" -ForegroundColor Cyan
 Write-Host "URL Akses: http://localhost:$port/list" -ForegroundColor Green
 
 while ($listener.IsListening) {
@@ -514,7 +514,7 @@ while ($listener.IsListening) {
 
             $htmlHeader = @'
 <!DOCTYPE html>
-<html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Server File Manager BITEK-002</title>
+<html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Server File Manager</title>
 <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"></script>
@@ -1430,7 +1430,7 @@ while ($listener.IsListening) {
                 $html += "<tr><td colspan='6' align='center' style='padding:40px; color:var(--text-muted); font-style:italic;'>Tidak ada file atau folder ditemukan di direktori ini.</td></tr>"
             }
             
-            $html += "</table></div><footer class='footer'>Powered By Departemen IT - © 2026 Studio Arsitektur & Interior</footer></div></body></html>"
+            $html += "</table></div><footer class='footer'>Powered By Ryuko</footer></div></body></html>"
             
             $buffer = [System.Text.Encoding]::UTF8.GetBytes($html); $res.ContentType = "text/html; charset=utf-8"; $res.OutputStream.Write($buffer, 0, $buffer.Length)
             $res.OutputStream.Close()
